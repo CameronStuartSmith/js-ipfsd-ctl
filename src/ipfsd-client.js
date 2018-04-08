@@ -155,13 +155,14 @@ class DaemonClient {
   stop (timeout, cb) {
     if (typeof timeout === 'function') {
       cb = timeout
-      timeout = null
+      timeout = undefined
     }
 
     cb = cb || (() => {})
     request
       .post(`${this.baseUrl}/stop`)
-      .query({ id: this._id, timeout })
+      .query({ id: this._id })
+      .send({ timeout })
       .end((err) => {
         if (err) {
           return cb(new Error(err.response.body.message))
@@ -185,13 +186,14 @@ class DaemonClient {
   killProcess (timeout, cb) {
     if (typeof timeout === 'function') {
       cb = timeout
-      timeout = null
+      timeout = undefined
     }
 
     cb = cb || (() => {})
     request
       .post(`${this.baseUrl}/kill`)
-      .query({ id: this._id, timeout })
+      .query({ id: this._id })
+      .send({ timeout })
       .end((err) => {
         if (err) {
           return cb(new Error(err.response.body.message))
