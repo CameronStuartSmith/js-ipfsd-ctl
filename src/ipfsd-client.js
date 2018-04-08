@@ -148,7 +148,7 @@ class DaemonClient {
   /**
    * Stop the daemon.
    *
-   * @param {integer} - Grace period to wait before force stopping the node
+   * @param {integer|undefined} timeout - Grace period to wait before force stopping the node
    * @param {function(Error)} [cb]
    * @returns {undefined}
    */
@@ -179,7 +179,7 @@ class DaemonClient {
    * First `SIGTERM` is sent, after 10.5 seconds `SIGKILL` is sent
    * if the process hasn't exited yet.
    *
-   * @param {integer} - Grace period to wait before force stopping the node
+   * @param {integer|undefined} timeout - Grace period to wait before force stopping the node
    * @param {function()} [cb] - Called when the process was killed.
    * @returns {undefined}
    */
